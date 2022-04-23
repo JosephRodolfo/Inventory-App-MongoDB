@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory App</title>
+  </head>
+  <body>
+{{>header}}
+
+<p>Test text 2</p> 
+
+
+  {{#each items}}
+
+<div class="message-container">
+
+  <h3>Name: {{itemName}}</h1>
+  <p>Description: {{description}}</p>
+
+  <p>Category: {{category}}</p>
+
+  </div>
+
+  {{/each}}
+
+</body>
+</html>
