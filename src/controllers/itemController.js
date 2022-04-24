@@ -1,27 +1,44 @@
-const Item = require('../models/item')
-const express = require('express')
-const router = new express.Router()
+const Item = require("../models/item");
+const express = require("express");
+const router = new express.Router();
 
-exports.post_item = ('/items', async (req, res) => {
-    const item = new Item(req.body)
+exports.post_item = async (req, res) => {
+  const item = new Item({
+    ...req.body,
+  });
 
-    try {
-        await item.save()
+  try {
+    await item.save();
 
-        res.status(201).send(item)
-    } catch (e) {
-        res.status(400).send(e)
+    res.status(201);
+
+    res.redirect("/");
+  } catch (e) {
+    res.status(400).send(e);
+  }
+};
+
+exports.delete_item = async (req, res) => {
+  try {
+    const item = await Item.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!item) {
+      return res.status(404).send();
     }
-})
 
-exports.get_items = ('/items', async (req, res) => {
-    try {
-        const items = await Item.find({})
-        res.render('layout', {items: items})
+    res.redirect("/");
+  } catch (e) {
+    res.status(500).send();
+  }
+};
 
-       // res.send(items)
-       
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
+exports.get_items = async (req, res) => {
+  try {
+    const items = await Item.find({});
+    res.render("index", { items: items });
+  } catch (e) {
+    res.status(500).send(e);
+  }
+};
