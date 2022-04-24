@@ -37,7 +37,23 @@ exports.delete_item = async (req, res) => {
 exports.get_items = async (req, res) => {
   try {
     const items = await Item.find({});
-    res.render("index", { items: items });
+    res.render("index", { items: items,
+                          edit: false });
+  } catch (e) {
+    res.status(500).send(e);
+  }
+};
+
+exports.edit_item = async (req, res) => {
+  try {
+
+    
+    const item = await Item.findByIdAndUpdate({_id: req.params.id,
+    }, {...req.body});
+   res.redirect("/");
+
+
+
   } catch (e) {
     res.status(500).send(e);
   }

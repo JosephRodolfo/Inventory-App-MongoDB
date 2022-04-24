@@ -2,28 +2,39 @@
 <html>
   <head>
     <title>Inventory App</title>
+    <link rel='stylesheet'   href='/stylesheets/styles.css' />
+
   </head>
   <body>
 {{>header}}
 
-<p>Test text 2</p> 
 
 
   {{#each items}}
 
-<div class="message-container">
 
-  <h3>Name: {{itemName}}</h1>
+
+<div class="message-container">
+  
+
+  <h3 class="line-content">{{itemName}}</h3> 
+  <div  class="{{_id}} make-hidden hidden-content-container">
+    <div class="close-box">x</div>
   <p>Description: {{description}}</p>
 
   <p>Category: {{category}}</p>
   <form method="POST" name={{_id}} action="/items/delete/{{_id}}">
   <input type="submit"  value='Delete'/>
   </form>
+  <button class="edit-button">Edit</button>
+
+  </div>
 
   </div>
 
   {{/each}}
 
 </body>
+
+<script src="/javascript/app.js"></script>
 </html>

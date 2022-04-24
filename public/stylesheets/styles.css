@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    margin: 0;
+    width: 100vw;
+    padding: 0;
+  }
+
+.make-hidden {
+  display: none;
+
+}
+
+
+
+.hidden-content-container {
+    color: blue;
+    background-color: lavenderblush;
+    margin: 0
+}
+
+.make-visible {
+    display: block;
+    position: absolute;
+    
+}
+
+form {
+  display:  flex;
+  flex-direction: column;
+  width: 500px
+}
+

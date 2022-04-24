@@ -20,7 +20,9 @@ router.get("/new", (req, res) => {
  router.post('/new', item_controller.post_item) 
 
  router.post('/items/delete/:id', item_controller.delete_item)
+
+
+
+router.post('/items/edit/:id', item_controller.edit_item)
+
 module.exports = router;
-
-
-
